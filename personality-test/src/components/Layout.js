@@ -16,13 +16,18 @@ export default function Layout() {
     setFinished(true);
   };
 
+  const restart = () => {
+    setGetStarted(true);
+    setFinished(false);
+  }
+
   return (
     <div className="w-[1290px]">
       {!getStarted && <Landing handleGetStartedClick={handleGetStartedClick} />}
       {getStarted && !finished && (
         <Question handleFinishClick={handleFinishClick} setResult={setResult} />
       )}
-      {finished && <Feedback result={result} />}
+      {finished && <Feedback result={result} restart={restart}/>}
     </div>
   );
 }
